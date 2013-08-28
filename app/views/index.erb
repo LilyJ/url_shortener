@@ -1,0 +1,26 @@
+<head><link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'></head>
+
+
+<div class="container">
+  <h1>Welcome to Short Links Generator</h1>
+  <form name= "url_form" action= "/urls" method= "post">  
+    <p>Insert your url below:</p>
+    <input type= "text" name= "url">
+    <input type= "submit" value= "submit">
+  </form> 
+
+<% if @error_msg %>
+  <span class = "error"><%= @error_msg  %> </span>
+<% end %>
+
+<div class="links">
+  <% Link.all.each do |link| %>
+    <p class="link">
+        <a href = "<%= link.url %>"><%= link.url %></a>   
+        <span class = "shorts"><a href="http://localhost:9393/<%= link.short_url %>"> bit.ly/<%= link.short_url %></span>
+    </p>
+  <% end %>
+  </div>
+</div>
+
+<!-- "partials/error_partial" -->
